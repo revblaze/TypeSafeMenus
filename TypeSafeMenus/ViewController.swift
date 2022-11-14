@@ -10,6 +10,7 @@ import Cocoa
 class ViewController: NSViewController {
   
   @IBOutlet weak var menuObject: NSPopUpButton!
+  @IBOutlet weak var selectedMenuItemLabel: NSTextField!
   
   // All menu items
   let menuItems = TypeSafeMenu.allItems()
@@ -17,11 +18,18 @@ class ViewController: NSViewController {
   let subMenuItems = TypeSafeMenu.build(withItems: [.iOS, .macOS, .tvOS])
   // Individual menu item
   let macMenuItem = TypeSafeMenu.macOS()
+  // Selected menu item
+  var selectedMenuItem: TypeSafeMenu {
+    let selectedItem = menuObject.selectedItem!.safeItem
+    return selectedItem
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
 
     initStaticMenu()
+    
+    addObserver(menuObject)
   }
   
   func initStaticMenu() {
@@ -60,6 +68,10 @@ class ViewController: NSViewController {
     selectMenu(item: selectedItem)
   }
   
+  func updateSelectedItemLabel(text: String) {
+    selectedMenuItemLabel.stringValue = text
+    selectedMenuItemLabel.renderMono()
+  }
   
   
   // MARK: - UI Handler
@@ -77,6 +89,47 @@ class ViewController: NSViewController {
     selectMacMenuItem()
   }
 
+  
+  
+  // MARK: - Observer
+  
+  func addObserver(_ forObject: NSPopUpButton) {
+    NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(self.didChangeItem(_:)),
+        name: NSMenu.didChangeItemNotification,
+        object: forObject.menu)
+  }
+  
+  @objc func didChangeItem(_ notification: Notification?) {
+    let title = selectedMenuItem()
+    updateSelectedItemLabel(text: title)
+  }
+  
 
 }
 
+
+
+extension NSMenuItem {
+  
+  var safeItem: TypeSafeMenu {
+    for i in TypeSafeMenu.allCases {
+      if i() == self.title {
+        return i
+      }
+    }
+    return TypeSafeMenu.first
+  }
+  
+}
+
+
+
+extension NSTextField {
+  
+  func renderMono() {
+    self.font = .monospacedSystemFont(ofSize: 13, weight: .medium)
+  }
+  
+}
