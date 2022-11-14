@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +675,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="TypeSafeMenus" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -683,9 +685,8 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
@@ -703,11 +704,88 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="TypeSafeMenus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="240"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box title="TypeSafe Menu" translatesAutoresizingMaskIntoConstraints="NO" id="dDl-SC-TFp">
+                                <rect key="frame" x="17" y="70" width="216" height="150"/>
+                                <view key="contentView" id="WTL-8V-eXX">
+                                    <rect key="frame" x="4" y="5" width="208" height="130"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-0P-r0B">
+                                            <rect key="frame" x="17" y="86" width="175" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="500" constant="168" id="vhC-cd-jm0"/>
+                                            </constraints>
+                                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="H3V-uj-dMK" id="5E8-5x-sP7">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="9BU-v9-6Vl">
+                                                    <items>
+                                                        <menuItem title="Item 1" state="on" id="H3V-uj-dMK"/>
+                                                        <menuItem title="Item 2" id="R1L-qq-7HZ"/>
+                                                        <menuItem title="Item 3" id="5rI-V4-ZIv"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                        </popUpButton>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nA1-dI-Kpo">
+                                            <rect key="frame" x="18" y="55" width="170" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Only Apple Platforms" bezelStyle="regularSquare" imagePosition="left" inset="2" id="S2G-bk-hzT">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="toggleMenuSubsetCheckbox:" target="XfG-lQ-9wD" id="Txk-uu-c1R"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iwk-CC-kVE">
+                                            <rect key="frame" x="13" y="11" width="182" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Select Item: macOS" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RBb-0w-Fho">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="selectMacMenuItemButtonAction:" target="XfG-lQ-9wD" id="18k-B9-a8f"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eLq-0P-r0B" firstAttribute="top" secondItem="WTL-8V-eXX" secondAttribute="top" constant="20" symbolic="YES" id="07F-q4-tAy"/>
+                                        <constraint firstAttribute="trailing" secondItem="eLq-0P-r0B" secondAttribute="trailing" constant="20" symbolic="YES" id="4hK-Pn-pbw"/>
+                                        <constraint firstItem="Iwk-CC-kVE" firstAttribute="top" secondItem="nA1-dI-Kpo" secondAttribute="bottom" constant="18" id="6lZ-AG-5TJ"/>
+                                        <constraint firstItem="eLq-0P-r0B" firstAttribute="leading" secondItem="WTL-8V-eXX" secondAttribute="leading" constant="20" symbolic="YES" id="Prv-fQ-FbX"/>
+                                        <constraint firstItem="nA1-dI-Kpo" firstAttribute="leading" secondItem="WTL-8V-eXX" secondAttribute="leading" constant="20" symbolic="YES" id="Xh6-YZ-PNv"/>
+                                        <constraint firstItem="Iwk-CC-kVE" firstAttribute="leading" secondItem="WTL-8V-eXX" secondAttribute="leading" constant="20" symbolic="YES" id="a6C-II-cXl"/>
+                                        <constraint firstItem="nA1-dI-Kpo" firstAttribute="top" secondItem="eLq-0P-r0B" secondAttribute="bottom" constant="18" id="cNh-Va-wCV"/>
+                                        <constraint firstAttribute="trailing" secondItem="nA1-dI-Kpo" secondAttribute="trailing" constant="20" symbolic="YES" id="d8R-XC-9ah"/>
+                                        <constraint firstAttribute="bottom" secondItem="Iwk-CC-kVE" secondAttribute="bottom" constant="18" id="w8a-cs-Oo4"/>
+                                        <constraint firstAttribute="trailing" secondItem="Iwk-CC-kVE" secondAttribute="trailing" constant="20" symbolic="YES" id="zEb-lL-Y5M"/>
+                                    </constraints>
+                                </view>
+                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w9R-zb-PyJ">
+                                <rect key="frame" x="18" y="31" width="92" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Selected Item:" id="vHd-TY-lCR">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="dDl-SC-TFp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="2hX-9m-g9L"/>
+                            <constraint firstAttribute="trailing" secondItem="dDl-SC-TFp" secondAttribute="trailing" constant="20" symbolic="YES" id="4FO-LZ-R2Y"/>
+                            <constraint firstItem="dDl-SC-TFp" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="Pzr-fI-edz"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="menuObject" destination="eLq-0P-r0B" id="odb-XK-TlX"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
