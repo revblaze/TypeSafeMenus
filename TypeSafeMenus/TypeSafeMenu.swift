@@ -10,11 +10,7 @@ enum TypeSafeMenu: String, CaseIterable {
   case iOS, macOS, tvOS, WindowsOS = "Windows OS", AndroidOS = "Android OS"
   
   static var first: TypeSafeMenu {
-    return .iOS
-  }
-  
-  var title: String {
-    return self.rawValue
+    return self.allCases[0]
   }
   
   static var all: [String] {
@@ -33,22 +29,4 @@ enum TypeSafeMenu: String, CaseIterable {
       return self.rawValue
   }
   
-//  static func selectedItem(_ menuItem: NSMenuItem) -> TypeSafeMenu {
-//    return menuItem.safeItem
-//  }
-  
 }
-
-//extension String {
-//  
-//  var menuItem: TypeSafeMenu {
-//    for itm in TypeSafeMenu.allCases {
-//      if self == itm() {
-//        return itm
-//      }
-//    }
-//    return TypeSafeMenu.first
-//  }
-//  
-//}
-

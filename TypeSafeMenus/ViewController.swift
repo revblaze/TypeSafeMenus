@@ -28,7 +28,6 @@ class ViewController: NSViewController {
     super.viewDidLoad()
 
     initStaticMenu()
-    
     addObserver(menuObject)
   }
   
@@ -45,7 +44,9 @@ class ViewController: NSViewController {
   }
   
   func selectMacMenuItem() {
-    updateMenu(withItems: menuItems, selectedItem: macMenuItem)
+    selectMenu(item: macMenuItem) // or,
+    // set new menu items with default selection:
+    // updateMenu(withItems: menuItems, selectedItem: macMenuItem)
   }
   
   
