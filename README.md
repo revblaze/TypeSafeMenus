@@ -1,6 +1,8 @@
 # TypeSafeMenus
 Simply type-safe Cocoa menus for Swift and Objective-C
 
+<img src="README/cover.png" />
+
 ## Example
 
 ### Setup
