@@ -767,24 +767,51 @@
                                     </constraints>
                                 </view>
                             </box>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w9R-zb-PyJ">
-                                <rect key="frame" x="18" y="31" width="92" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Selected Item:" id="vHd-TY-lCR">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="3ex-Ze-JFW">
+                                <rect key="frame" x="0.0" y="20" width="250" height="36"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="op7-9n-Xqo">
+                                        <rect key="frame" x="18" y="10" width="92" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="88" id="36p-BV-jZF"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Selected Item:" id="KQG-fC-8Vt">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xXW-MI-11d">
+                                        <rect key="frame" x="114" y="10" width="118" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="truncatingMiddle" placeholderString="Platforms" id="Sdp-SP-NTd">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="xXW-MI-11d" firstAttribute="leading" secondItem="op7-9n-Xqo" secondAttribute="trailing" constant="8" symbolic="YES" id="30h-hY-fwI"/>
+                                    <constraint firstItem="op7-9n-Xqo" firstAttribute="leading" secondItem="3ex-Ze-JFW" secondAttribute="leading" constant="20" symbolic="YES" id="WgF-jr-ihV"/>
+                                    <constraint firstAttribute="trailing" secondItem="xXW-MI-11d" secondAttribute="trailing" constant="20" symbolic="YES" id="cXM-Cc-DB8"/>
+                                    <constraint firstAttribute="height" constant="36" id="caX-g6-Od3"/>
+                                    <constraint firstItem="op7-9n-Xqo" firstAttribute="centerY" secondItem="3ex-Ze-JFW" secondAttribute="centerY" id="hpz-vw-Je9"/>
+                                    <constraint firstItem="xXW-MI-11d" firstAttribute="centerY" secondItem="3ex-Ze-JFW" secondAttribute="centerY" id="qGk-Yr-Z5b"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="dDl-SC-TFp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="2hX-9m-g9L"/>
                             <constraint firstAttribute="trailing" secondItem="dDl-SC-TFp" secondAttribute="trailing" constant="20" symbolic="YES" id="4FO-LZ-R2Y"/>
+                            <constraint firstItem="3ex-Ze-JFW" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="4Wc-bi-4j7"/>
                             <constraint firstItem="dDl-SC-TFp" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="Pzr-fI-edz"/>
+                            <constraint firstAttribute="trailing" secondItem="3ex-Ze-JFW" secondAttribute="trailing" id="enb-on-2bI"/>
+                            <constraint firstAttribute="bottom" secondItem="3ex-Ze-JFW" secondAttribute="bottom" constant="20" symbolic="YES" id="szu-fM-Umq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="menuObject" destination="eLq-0P-r0B" id="odb-XK-TlX"/>
+                        <outlet property="selectedMenuItemLabel" destination="xXW-MI-11d" id="mHF-h2-8sC"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
