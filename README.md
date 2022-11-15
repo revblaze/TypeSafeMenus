@@ -3,6 +3,8 @@ Simply type-safe Cocoa menus for Swift and Objective-C
 
 ## Example
 
+<img src="README/README.png" />
+
 ### Setup
 
 ```swift
